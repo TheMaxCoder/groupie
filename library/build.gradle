@@ -1,8 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.github.dcendents.android-maven'
 
 buildscript {
     repositories {
+        mavenCentral()
         jcenter()
     }
     dependencies {
@@ -36,11 +37,14 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockito_version"
 }
 
-publish {
-    userOrg = 'lisawray'
-    groupId = 'com.xwray'
-    artifactId = 'groupie'
-    publishVersion = '2.2.0'
-    desc = 'Library for groups and multiple view types in a RecyclerView'
-    website = 'https://github.com/lisawray/groupie'
-}
+//publish {
+//    userOrg = 'lisawray'
+//    groupId = 'com.xwray'
+//    artifactId = 'groupie'
+//    publishVersion = '2.2.0'
+//    desc = 'Library for groups and multiple view types in a RecyclerView'
+//    website = 'https://github.com/lisawray/groupie'
+//}
+
+apply from: "$rootDir/gradle/artifacts.gradle"
+apply from: "$rootDir/gradle/gradle-mvn-push.gradle"
