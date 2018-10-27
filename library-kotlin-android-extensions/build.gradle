@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 buildscript {
     repositories {
@@ -10,7 +11,8 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
-        classpath "com.novoda:bintray-release:$novodaBintrayVersion"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
 
@@ -41,7 +43,7 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.xwray:groupie:2.2.0'
+    api project(':library')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
@@ -53,11 +55,28 @@ tasks.withType(Javadoc).all {
     enabled = false
 }
 
-publish {
-    userOrg = 'lisawray'
-    groupId = 'com.xwray'
-    artifactId = 'groupie-kotlin-android-extensions'
-    publishVersion = '2.2.0'
-    desc = 'Library for groups and multiple view types in a RecyclerView'
-    website = 'https://github.com/lisawray/groupie'
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'groupie-kotlin-android-extensions'
+
+    publishedGroupId = 'com.xwray'
+    libraryName = 'Groupie'
+    artifact = 'groupie-kotlin-android-extensions'
+
+    libraryDescription = 'Library for groups and multiple view types in a RecyclerView'
+
+    siteUrl = 'https://github.com/lisawray/groupie'
+    gitUrl = 'https://github.com/lisawray/groupie.git'
+
+    libraryVersion = '2.2.0'
+
+    developerId = 'lisawray'
+    developerName = 'Lisa Wray'
+    developerEmail = 'lisawray@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
 }
+
+apply from: "$rootDir/gradle/bintray_install.gradle"

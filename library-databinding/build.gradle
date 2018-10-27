@@ -1,12 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath "com.novoda:bintray-release:$novodaBintrayVersion"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
 
@@ -31,7 +33,7 @@ android {
 }
 
 dependencies {
-    compileOnly('com.xwray:groupie:2.2.0')
+    api project(':library')
     compileOnly("androidx.databinding:databinding-runtime:$databinding_version") {
         transitive = false
     }
@@ -42,11 +44,33 @@ dependencies {
     compileOnly("androidx.annotation:annotation:1.0.0")
 }
 
-publish {
-    userOrg = 'lisawray'
-    groupId = 'com.xwray'
-    artifactId = 'groupie-databinding'
-    publishVersion = '2.2.0'
-    desc = 'Library for groups and multiple view types in a RecyclerView'
-    website = 'https://github.com/lisawray/groupie'
+tasks.withType(Javadoc).all {
+    enabled = false
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'groupie-databinding'
+
+    publishedGroupId = 'com.xwray'
+    libraryName = 'Groupie'
+    artifact = 'groupie-databinding'
+
+    libraryDescription = 'Library for groups and multiple view types in a RecyclerView'
+
+    siteUrl = 'https://github.com/lisawray/groupie'
+    gitUrl = 'https://github.com/lisawray/groupie.git'
+
+    libraryVersion = '2.2.0'
+
+    developerId = 'lisawray'
+    developerName = 'Lisa Wray'
+    developerEmail = 'lisawray@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
+apply from: "$rootDir/gradle/bintray_install.gradle"
+
