@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.lisawray'
+group='com.github.lisawray.groupie'
 
 buildscript {
     repositories {
@@ -29,11 +29,8 @@ android {
     }
 }
 
-
-
 dependencies {
     implementation "androidx.recyclerview:recyclerview:1.0.0"
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
-
 }

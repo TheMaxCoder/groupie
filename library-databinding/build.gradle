@@ -1,12 +1,11 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.lisawray.groupie'
 
 buildscript {
     repositories {
         jcenter()
-    }
-    dependencies {
-        classpath "com.novoda:bintray-release:$novodaBintrayVersion"
     }
 }
 
@@ -40,13 +39,4 @@ dependencies {
     }
     compileOnly("androidx.recyclerview:recyclerview:1.0.0")
     compileOnly("androidx.annotation:annotation:1.0.0")
-}
-
-publish {
-    userOrg = 'lisawray'
-    groupId = 'com.xwray'
-    artifactId = 'groupie-databinding'
-    publishVersion = '2.2.0'
-    desc = 'Library for groups and multiple view types in a RecyclerView'
-    website = 'https://github.com/lisawray/groupie'
 }
