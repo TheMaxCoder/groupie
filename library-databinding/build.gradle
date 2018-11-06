@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-    compileOnly('com.xwray:groupie:2.2.0')
+    implementation project(':library')
     compileOnly("androidx.databinding:databinding-runtime:$databinding_version") {
         transitive = false
     }

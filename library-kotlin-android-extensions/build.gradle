@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.xwray:groupie:2.2.0'
+    implementation project(':library')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
