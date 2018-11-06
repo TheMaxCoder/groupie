@@ -33,6 +33,6 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.vectordrawable:vectordrawable:1.0.0"
     implementation "androidx.vectordrawable:vectordrawable-animated:1.0.0"
-    implementation 'com.github.lisawray.groupie:library-databinding:jitpack-SNAPSHOT'
+    implementation 'com.github.xwray.groupie:library-databinding:jitpack-SNAPSHOT'
 
 }

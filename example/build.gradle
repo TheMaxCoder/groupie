@@ -42,8 +42,8 @@ dependencies {
     implementation project(':example-shared')
     implementation project(':library')
     implementation project(':library-kotlin-android-extensions')
-    implementation 'com.github.lisawray.groupie:library:jitpack-SNAPSHOT'
-    implementation 'com.github.lisawray.groupie:library-kotlin-android-extensions:jitpack-SNAPSHOT'
+    implementation 'com.github.xwray.groupie:library:jitpack-SNAPSHOT'
+    implementation 'com.github.xwray.groupie:library-kotlin-android-extensions:jitpack-SNAPSHOT'
 }
 
 repositories {
